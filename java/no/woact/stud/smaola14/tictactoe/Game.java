@@ -1,30 +1,29 @@
 package no.woact.stud.smaola14.tictactoe;
 
-import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.os.Handler;
-import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
 
 /**
  * TicTacToe Game
  */
 public class Game extends AppCompatActivity {
+    Context context;
 
+    GridLayout gameBoard;
     TextView txtPlayers;
+    Button btnNewGame;
+    Button btnMenu;
+    Button btnResults;
+
+    TextView[] boardElements;
     String playerOne;
     String playerTwo;
-    GridLayout gameBoard;
-    TextView[] boardElements;
     int elementsOnBoard = 0;
     int player = 1;
 
@@ -32,14 +31,23 @@ public class Game extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+        context = this;
+
+        // Get views and widgets
+        gameBoard = (GridLayout) findViewById(R.id.gameBoard);
+        btnMenu = (Button) findViewById(R.id.btnMenu);
+        btnNewGame = (Button) findViewById(R.id.btnNewGame);
+        btnResults = (Button) findViewById(R.id.btnResults);
+        txtPlayers = (TextView) findViewById(R.id.txtPlayers);
 
         // Add players to the title: player1 VS player2
-        txtPlayers = (TextView) findViewById(R.id.txtPlayers);
         Intent intent = getIntent();
         playerOne = intent.getStringExtra("PlayerOne");
         playerTwo = intent.getStringExtra("PlayerTwo");
         txtPlayers.setText(playerOne + " VS " + playerTwo);
 
+        // Create and set OnClickListeners
+        setButtonOnClickListeners();
         final View.OnClickListener boardElementListener = new View.OnClickListener() {
             @Override
             public void onClick(View boardElement) {
@@ -49,16 +57,50 @@ public class Game extends AppCompatActivity {
         };
 
         // Get the gameBoard and all its elements
-        gameBoard = (GridLayout) findViewById(R.id.gameBoard);
         boardElements = new TextView[9];
         for (int i = 0; i < gameBoard.getChildCount(); i++) {
             TextView boardElement = (TextView) gameBoard.getChildAt(i);
             boardElements[i] = boardElement;
             boardElement.setOnClickListener(boardElementListener);
         }
+    }
 
+    // Create and set OnClickListeners for buttons
+    private void setButtonOnClickListeners() {
+        btnNewGame.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                resetGame();
+            }
+        });
 
+        btnMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, Menu.class);
+                startActivity(intent);
+            }
+        });
 
+        btnResults.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, Results.class);
+                startActivity(intent);
+            }
+        });
+    }
+
+    // Reset the game when starting a new game
+    private void resetGame() {
+        txtPlayers.setText(playerOne + " VS " + playerTwo);
+        for (int i = 0; i < gameBoard.getChildCount(); i++) {
+            TextView boardElement = (TextView) gameBoard.getChildAt(i);
+            boardElement.setText("");
+            boardElement.setEnabled(true);
+            boardElement.setClickable(true);
+            elementsOnBoard = 0;
+        }
     }
 
     // Add element to board, player 1 = X, player 2 = O
@@ -119,7 +161,7 @@ public class Game extends AppCompatActivity {
         if (winner.equals("X") || winner.equals("O") || elementsOnBoard == 9) {
             if (winner.equals("X"))
                 winner = playerOne;
-            else if (winner.equals("Y"))
+            else if (winner.equals("O"))
                 winner = playerTwo;
 
             endGame(winner);

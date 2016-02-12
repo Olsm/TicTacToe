@@ -31,6 +31,7 @@ public class Menu extends AppCompatActivity {
                 String playerOne = txtPlayerOne.getText().toString();
                 String playerTwo = txtPlayerTwo.getText().toString();
 
+                // TODO: Make sure name cannot be empty and only one line
                 Intent intent = new Intent(context, Game.class);
                 intent.putExtra("PlayerOne", playerOne);
                 intent.putExtra("PlayerTwo", playerTwo);
