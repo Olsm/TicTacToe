@@ -25,6 +25,7 @@ public class Game extends AppCompatActivity {
     String playerTwo;
     GridLayout gameBoard;
     TextView[] boardElements;
+    int elementsOnBoard = 0;
     int player = 1;
 
     @Override
@@ -68,10 +69,25 @@ public class Game extends AppCompatActivity {
             boardElement.setText("O");
         player *= -1;
 
+        elementsOnBoard++;
         checkGameState();
     }
 
+    // End the game and show results
     // TODO: 11.02.2016 Check if a player has won or game is over
+    private void endGame(String winner) {
+        if (!winner.isEmpty())
+            txtPlayers.setText(winner + " won!");
+        else
+            txtPlayers.setText("TIE!");
+
+        for (int i = 0; i < gameBoard.getChildCount(); i++) {
+            TextView boardElement = (TextView) gameBoard.getChildAt(i);
+            boardElement.setEnabled(false);
+        }
+    }
+
+    // Check if there is a winner or if game is over
     private void checkGameState() {
         String winner = "";
 
@@ -100,19 +116,15 @@ public class Game extends AppCompatActivity {
             winner = boardElements[4].getText().toString();
 
         // todo: save results
-        if (winner.equals("X") || winner.equals("O")) {
+        if (winner.equals("X") || winner.equals("O") || elementsOnBoard == 9) {
             if (winner.equals("X"))
                 winner = playerOne;
-            else
+            else if (winner.equals("Y"))
                 winner = playerTwo;
 
-            txtPlayers.setText(winner + " has won!");
-
-            for (int i = 0; i < gameBoard.getChildCount(); i++) {
-                TextView boardElement = (TextView) gameBoard.getChildAt(i);
-                boardElement.setEnabled(false);
-            }
+            endGame(winner);
         }
+
     }
 
     // Look for a winner in a row of cells
