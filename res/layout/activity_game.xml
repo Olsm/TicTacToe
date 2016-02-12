@@ -1,0 +1,180 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#2acaff"
+    tools:context="no.woact.stud.smaola14.tictactoe.Game">
+
+    <!-- The primary full-screen view. This can be replaced with whatever view
+         is needed to present your content, e.g. VideoView, SurfaceView,
+         TextureView, etc. -->
+    <TextView
+        android:id="@+id/txtPlayers"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:keepScreenOn="true"
+        android:text="Player1 VS Player2"
+        android:textColor="#000000"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        android:layout_gravity="center_horizontal|top"
+        android:layout_margin="1dp" />
+
+    <GridLayout
+        android:layout_width="375dp"
+        android:layout_height="375dp"
+        android:layout_gravity="center"
+        android:columnCount="4"
+        android:rowCount="4"
+        android:columnOrderPreserved="true"
+        android:useDefaultMargins="false"
+        android:background="#000"
+        android:id="@+id/gameBoard"
+        android:layout_margin="1dp">
+
+        <TextView
+            android:layout_width="123dp"
+            android:layout_height="123dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:id="@+id/txtBoardOne"
+            android:layout_row="0"
+            android:layout_column="0"
+            android:textSize="110dp"
+            android:background="#FFFF"
+            android:textAlignment="center"
+            android:textStyle="italic"
+            android:layout_gravity="center"
+            android:layout_margin="1dp" />
+
+        <TextView
+            android:layout_width="123dp"
+            android:layout_height="123dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:id="@+id/txtBoardTwo"
+            android:layout_row="0"
+            android:layout_column="1"
+            android:textSize="110dp"
+            android:textAlignment="center"
+            android:background="#FFFF"
+            android:layout_gravity="center"
+            android:layout_margin="1dp" />
+
+        <TextView
+            android:layout_width="123dp"
+            android:layout_height="123dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:id="@+id/txtBoardThree"
+            android:layout_row="0"
+            android:layout_column="2"
+            android:textSize="110dp"
+            android:textAlignment="center"
+            android:background="#FFFF"
+            android:layout_gravity="center"
+            android:layout_margin="1dp" />
+
+        <TextView
+            android:layout_width="123dp"
+            android:layout_height="123dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:id="@+id/txtBoardFour"
+            android:layout_row="1"
+            android:layout_column="0"
+            android:textSize="110dp"
+            android:textAlignment="center"
+            android:background="#FFFF"
+            android:layout_gravity="center"
+            android:layout_margin="1dp" />
+
+        <TextView
+            android:layout_width="123dp"
+            android:layout_height="123dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:id="@+id/txtBoardFive"
+            android:layout_row="1"
+            android:layout_column="1"
+            android:textSize="110dp"
+            android:textAlignment="center"
+            android:background="#FFFF"
+            android:layout_gravity="center"
+            android:layout_margin="1dp" />
+
+        <TextView
+            android:layout_width="123dp"
+            android:layout_height="123dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:id="@+id/txtBoardSix"
+            android:layout_row="1"
+            android:layout_column="2"
+            android:textSize="110dp"
+            android:textAlignment="center"
+            android:background="#FFFF"
+            android:layout_gravity="center"
+            android:layout_margin="1dp" />
+
+        <TextView
+            android:layout_width="123dp"
+            android:layout_height="123dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:id="@+id/txtBoardSeven"
+            android:layout_row="2"
+            android:layout_column="0"
+            android:textSize="110dp"
+            android:textAlignment="center"
+            android:background="#FFFF"
+            android:layout_gravity="center"
+            android:layout_margin="1dp" />
+
+        <TextView
+            android:layout_width="123dp"
+            android:layout_height="123dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:id="@+id/txtBoardEight"
+            android:layout_row="2"
+            android:layout_column="1"
+            android:textSize="110dp"
+            android:textAlignment="center"
+            android:background="#FFFF"
+            android:layout_gravity="center"
+            android:layout_margin="1dp" />
+
+        <TextView
+            android:layout_width="123dp"
+            android:layout_height="123dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:id="@+id/txtBoardNine"
+            android:layout_row="2"
+            android:layout_column="2"
+            android:textSize="110dp"
+            android:textAlignment="center"
+            android:background="#FFFF"
+            android:layout_gravity="center"
+            android:layout_margin="1dp" />
+
+    </GridLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Game"
+        android:id="@+id/btnNewGame"
+        android:layout_gravity="left|bottom" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Menu"
+        android:id="@+id/btnMenu"
+        android:layout_gravity="center_horizontal|bottom" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Results"
+        android:id="@+id/btnResults"
+        android:layout_gravity="bottom|right" />
+
+    <!-- This FrameLayout insets its children based on system windows using
+         android:fitsSystemWindows. -->
+
+</FrameLayout>
