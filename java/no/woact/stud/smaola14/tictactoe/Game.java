@@ -71,6 +71,9 @@ public class Game extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 resetGame();
+                /* Alternatively restart activity
+                AppCompatActivity activity = (AppCompatActivity) context;
+                activity.recreate(); */
             }
         });
 
