@@ -38,7 +38,7 @@ public class Game extends AppCompatActivity {
         btnMenu = (Button) findViewById(R.id.btnMenu);
         btnNewGame = (Button) findViewById(R.id.btnNewGame);
         btnResults = (Button) findViewById(R.id.btnResults);
-        txtPlayers = (TextView) findViewById(R.id.txtPlayers);
+        txtPlayers = (TextView) findViewById(R.id.txtStatus);
 
         // Add players to the title: player1 VS player2
         Intent intent = getIntent();

@@ -9,15 +9,14 @@
          is needed to present your content, e.g. VideoView, SurfaceView,
          TextureView, etc. -->
     <TextView
-        android:id="@+id/txtPlayers"
+        android:id="@+id/txtStatus"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="70dp"
         android:gravity="center"
         android:keepScreenOn="true"
-        android:text="Player1 VS Player2"
+        android:text="@string/initial_status_text"
         android:textColor="@color/black"
-        android:textSize="25dp"
-        android:textStyle="bold"
+        android:textSize="30dp"
         android:layout_gravity="center_horizontal|top"
         android:layout_margin="1dp" />
 
@@ -43,7 +42,6 @@
             android:textSize="110dp"
             android:background="@color/white"
             android:textAlignment="center"
-            android:textStyle="italic"
             android:layout_gravity="center"
             android:layout_margin="1dp" />
 
@@ -153,28 +151,34 @@
 
     </GridLayout>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Game"
-        android:id="@+id/btnNewGame"
-        android:layout_gravity="left|bottom" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:layout_gravity="bottom">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Menu"
-        android:id="@+id/btnMenu"
-        android:layout_gravity="center_horizontal|bottom" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Menu"
+            android:id="@+id/btnMenu"
+            android:layout_gravity="center_horizontal|bottom"
+            android:layout_weight="1" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Results"
-        android:id="@+id/btnResults"
-        android:layout_gravity="bottom|right" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="ScoreBoard"
+            android:id="@+id/btnResults"
+            android:layout_weight="1" />
 
-    <!-- This FrameLayout insets its children based on system windows using
-         android:fitsSystemWindows. -->
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="New Game"
+            android:id="@+id/btnNewGame"
+            android:layout_weight="1" />
+
+    </LinearLayout>
 
 </FrameLayout>
