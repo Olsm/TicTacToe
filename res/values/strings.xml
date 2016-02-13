@@ -8,4 +8,5 @@
     <string name="hint_player_two">Player name 2</string>
     <string name="start_game">Start Game</string>
     <string name="initial_status_text">Player1 VS Player2</string>
+    <string name="duplicate_player_name_error">Players cannot be identical</string>
 </resources>

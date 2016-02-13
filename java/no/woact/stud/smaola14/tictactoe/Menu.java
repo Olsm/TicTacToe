@@ -34,11 +34,13 @@ public class Menu extends AppCompatActivity {
                 String playerTwo = txtPlayerTwo.getText().toString();
 
                 // Make sure names cannot be empty
-                if (playerOne.isEmpty() || playerTwo.isEmpty()) {
+                if (playerOne.isEmpty() || playerTwo.isEmpty() || playerOne.equals(playerTwo)) {
                     if (playerOne.isEmpty())
                         txtPlayerOne.setError(getString(R.string.empty_field_error));
                     if (playerTwo.isEmpty())
                         txtPlayerTwo.setError(getString(R.string.empty_field_error));
+                    if (playerOne.equals(playerTwo))
+                        txtPlayerTwo.setError(getString(R.string.duplicate_player_name_error));
                     return;
                 }
 
