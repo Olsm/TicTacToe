@@ -30,7 +30,7 @@ public class Result {
         String result = dateTime + " | ";
 
         // If there was a winner, add who is winner and loser
-        if (!winner.equals("tie")) {
+        if (!winner.isEmpty()) {
             String loser;
             if (playerOne.equals(winner))
                 loser = playerTwo;

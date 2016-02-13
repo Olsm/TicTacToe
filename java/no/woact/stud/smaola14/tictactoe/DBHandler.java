@@ -49,7 +49,7 @@ public class DBHandler extends SQLiteOpenHelper {
         ArrayList<Result> results = new ArrayList<>();
 
         // Run a query to get all rows of results table
-        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE, null);
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE + " ORDER BY " + DATETIME + " DESC", null);
 
         // Get each individual cell from each row and add to Result objects
         cursor.moveToFirst();
