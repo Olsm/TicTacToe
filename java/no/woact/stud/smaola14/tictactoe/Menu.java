@@ -31,7 +31,15 @@ public class Menu extends AppCompatActivity {
                 String playerOne = txtPlayerOne.getText().toString();
                 String playerTwo = txtPlayerTwo.getText().toString();
 
-                // TODO: Make sure name cannot be empty and only one line
+                // Make sure names cannot be empty
+                if (playerOne.isEmpty() || playerTwo.isEmpty()) {
+                    if (playerOne.isEmpty())
+                        txtPlayerOne.setError(getString(R.string.empty_field_error));
+                    if (playerTwo.isEmpty())
+                        txtPlayerTwo.setError(getString(R.string.empty_field_error));
+                    return;
+                }
+
                 Intent intent = new Intent(context, Game.class);
                 intent.putExtra("PlayerOne", playerOne);
                 intent.putExtra("PlayerTwo", playerTwo);
