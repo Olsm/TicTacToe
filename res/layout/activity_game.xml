@@ -5,9 +5,6 @@
     android:background="@color/gameBoardBackground"
     tools:context="no.woact.stud.smaola14.tictactoe.Game">
 
-    <!-- The primary full-screen view. This can be replaced with whatever view
-         is needed to present your content, e.g. VideoView, SurfaceView,
-         TextureView, etc. -->
     <TextView
         android:id="@+id/txtStatus"
         android:layout_width="match_parent"
@@ -162,14 +159,20 @@
             android:layout_height="match_parent"
             android:text="ScoreBoard"
             android:id="@+id/btnResults"
-            android:layout_weight="1" />
+            android:background="@color/buttonBackground"
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+            android:textSize="20dp" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="New Game"
             android:id="@+id/btnNewGame"
-            android:layout_weight="1" />
+            android:background="@color/buttonBackground"
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+            android:textSize="20dp" />
 
     </LinearLayout>
 
