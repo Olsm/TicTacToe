@@ -20,7 +20,7 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/app_name" />
         <activity
-            android:name=".Results"
+            android:name=".Scoreboard"
             android:label="@string/results_title" />
     </application>
 

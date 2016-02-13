@@ -9,11 +9,14 @@ import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.TextView;
 
+import java.util.GregorianCalendar;
+
 /**
  * TicTacToe Game
  */
 public class Game extends AppCompatActivity {
     Context context;
+    DBHandler dbHandler;
 
     GridLayout gameBoard;
     TextView txtPlayers;
@@ -32,6 +35,7 @@ public class Game extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
         context = this;
+        dbHandler = new DBHandler(this);
 
         // Get views and widgets
         gameBoard = (GridLayout) findViewById(R.id.gameBoard);
@@ -88,7 +92,7 @@ public class Game extends AppCompatActivity {
         btnResults.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, Results.class);
+                Intent intent = new Intent(context, Scoreboard.class);
                 startActivity(intent);
             }
         });
@@ -119,12 +123,25 @@ public class Game extends AppCompatActivity {
     }
 
     // End the game and show results
-    // TODO: 11.02.2016 Check if a player has won or game is over
     private void endGame(String winner) {
+        String winnerText;
+
         if (!winner.isEmpty())
-            txtPlayers.setText(winner + " won!");
+            winnerText = winner + " won!";
         else
-            txtPlayers.setText("TIE!");
+            winnerText = "TIE";
+
+        // Display result and save result to DB
+        txtPlayers.setText(winnerText);
+        GregorianCalendar gc = new GregorianCalendar();
+        String dateTime = String.valueOf(gc.get(GregorianCalendar.YEAR))
+                + "-" + String.valueOf(gc.get(GregorianCalendar.MONTH))
+                + "-" + String.valueOf(gc.get(GregorianCalendar.DAY_OF_MONTH))
+                + " " + String.valueOf(gc.get(GregorianCalendar.HOUR_OF_DAY))
+                + ":" + String.valueOf(gc.get(GregorianCalendar.MINUTE))
+                + ":" + String.valueOf(gc.get(GregorianCalendar.SECOND));
+        Result result = new Result(playerOne, playerTwo, winner, dateTime);
+        dbHandler.addResult(result);
 
         for (int i = 0; i < gameBoard.getChildCount(); i++) {
             TextView boardElement = (TextView) gameBoard.getChildAt(i);
@@ -160,7 +177,7 @@ public class Game extends AppCompatActivity {
         if (checkForWinnerDiagonal())
             winner = boardElements[4].getText().toString();
 
-        // todo: save results
+        // End game if there was a winner
         if (winner.equals("X") || winner.equals("O") || elementsOnBoard == 9) {
             if (winner.equals("X"))
                 winner = playerOne;

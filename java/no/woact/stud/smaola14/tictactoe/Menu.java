@@ -52,7 +52,7 @@ public class Menu extends AppCompatActivity {
         btnScoreBoard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, Results.class);
+                Intent intent = new Intent(context, Scoreboard.class);
                 startActivity(intent);
             }
         });

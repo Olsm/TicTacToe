@@ -2,10 +2,10 @@
     <string name="app_name">TicTacToe</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
-    <string name="results_title">TicTacToe Results</string>
+    <string name="results_title">TicTacToe Scoreboard</string>
     <string name="empty_field_error">Field cannot be empty</string>
-    <string name="hint_player_one">Player 1</string>
-    <string name="hint_player_two">Player 2</string>
+    <string name="hint_player_one">Player name 1</string>
+    <string name="hint_player_two">Player name 2</string>
     <string name="start_game">Start Game</string>
     <string name="initial_status_text">Player1 VS Player2</string>
 </resources>
