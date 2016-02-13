@@ -160,14 +160,6 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="Menu"
-            android:id="@+id/btnMenu"
-            android:layout_gravity="center_horizontal|bottom"
-            android:layout_weight="1" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
             android:text="ScoreBoard"
             android:id="@+id/btnResults"
             android:layout_weight="1" />

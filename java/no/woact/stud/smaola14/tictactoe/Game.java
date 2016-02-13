@@ -21,7 +21,6 @@ public class Game extends AppCompatActivity {
     GridLayout gameBoard;
     TextView txtPlayers;
     Button btnNewGame;
-    Button btnMenu;
     Button btnResults;
 
     TextView[] boardElements;
@@ -39,7 +38,6 @@ public class Game extends AppCompatActivity {
 
         // Get views and widgets
         gameBoard = (GridLayout) findViewById(R.id.gameBoard);
-        btnMenu = (Button) findViewById(R.id.btnMenu);
         btnNewGame = (Button) findViewById(R.id.btnNewGame);
         btnResults = (Button) findViewById(R.id.btnResults);
         txtPlayers = (TextView) findViewById(R.id.txtStatus);
@@ -78,14 +76,6 @@ public class Game extends AppCompatActivity {
                 /* Alternatively restart activity
                 AppCompatActivity activity = (AppCompatActivity) context;
                 activity.recreate(); */
-            }
-        });
-
-        btnMenu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(context, Menu.class);
-                startActivity(intent);
             }
         });
 
