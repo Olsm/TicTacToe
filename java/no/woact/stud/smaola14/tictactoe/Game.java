@@ -97,6 +97,7 @@ public class Game extends AppCompatActivity {
             boardElement.setEnabled(true);
             boardElement.setClickable(true);
             elementsOnBoard = 0;
+            player = 1;
         }
     }
 
