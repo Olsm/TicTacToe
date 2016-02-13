@@ -4,4 +4,7 @@
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="results_title">TicTacToe Results</string>
     <string name="empty_field_error">Field cannot be empty</string>
+    <string name="hint_player_one">Player 1</string>
+    <string name="hint_player_two">Player 2</string>
+    <string name="start_game">Start Game</string>
 </resources>

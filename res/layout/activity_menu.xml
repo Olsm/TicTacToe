@@ -14,18 +14,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/txtPlayerOne"
-        android:hint="Player 1" />
+        android:inputType="textPersonName"
+        android:hint="@string/hint_player_one" />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/txtPlayerTwo"
-        android:hint="Player 2" />
+        android:inputType="textPersonName"
+        android:hint="@string/hint_player_two" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Start Game"
+        android:text="@string/start_game"
         android:id="@+id/btnStart"
         android:layout_gravity="right" />
 </LinearLayout>
