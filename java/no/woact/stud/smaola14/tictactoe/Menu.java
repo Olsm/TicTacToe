@@ -12,6 +12,7 @@ public class Menu extends AppCompatActivity {
 
     Context context;
     Button btnStart;
+    Button btnScoreBoard;
     EditText txtPlayerOne;
     EditText txtPlayerTwo;
 
@@ -22,6 +23,7 @@ public class Menu extends AppCompatActivity {
 
         context = this;
         btnStart = (Button) findViewById(R.id.btnStart);
+        btnScoreBoard = (Button) findViewById(R.id.btnScoreBoard);
         txtPlayerOne = (EditText) findViewById(R.id.txtPlayerOne);
         txtPlayerTwo = (EditText) findViewById(R.id.txtPlayerTwo);
 
@@ -43,6 +45,14 @@ public class Menu extends AppCompatActivity {
                 Intent intent = new Intent(context, Game.class);
                 intent.putExtra("PlayerOne", playerOne);
                 intent.putExtra("PlayerTwo", playerTwo);
+                startActivity(intent);
+            }
+        });
+
+        btnScoreBoard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, Results.class);
                 startActivity(intent);
             }
         });

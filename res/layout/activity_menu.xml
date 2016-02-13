@@ -8,7 +8,8 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="no.woact.stud.smaola14.tictactoe.Menu"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:weightSum="1">
 
     <EditText
         android:layout_width="match_parent"
@@ -22,12 +23,33 @@
         android:layout_height="wrap_content"
         android:id="@+id/txtPlayerTwo"
         android:inputType="textPersonName"
-        android:hint="@string/hint_player_two" />
+        android:hint="@string/hint_player_two"
+        android:layout_marginTop="5dp" />
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/start_game"
         android:id="@+id/btnStart"
-        android:layout_gravity="right" />
+        android:layout_column="1"
+        android:layout_row="0"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:layout_weight="0.1"
+        android:layout_marginTop="20dp"
+        android:textSize="20dp" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ScoreBoard"
+        android:id="@+id/btnScoreBoard"
+        android:layout_row="0"
+        android:layout_column="0"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:layout_weight="0.1"
+        android:layout_marginTop="10dp"
+        android:textSize="20dp" />
+
 </LinearLayout>
