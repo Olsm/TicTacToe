@@ -125,11 +125,11 @@ public class Game extends AppCompatActivity {
         txtPlayers.setText(winnerText);
         GregorianCalendar gc = new GregorianCalendar();
         String dateTime = String.valueOf(gc.get(GregorianCalendar.YEAR))
-                + "-" + String.valueOf(gc.get(GregorianCalendar.MONTH))
-                + "-" + String.valueOf(gc.get(GregorianCalendar.DAY_OF_MONTH))
-                + " " + String.valueOf(gc.get(GregorianCalendar.HOUR_OF_DAY))
-                + ":" + String.valueOf(gc.get(GregorianCalendar.MINUTE))
-                + ":" + String.valueOf(gc.get(GregorianCalendar.SECOND));
+                + "-" + (gc.get(GregorianCalendar.MONTH) + 1)
+                + "-" + gc.get(GregorianCalendar.DAY_OF_MONTH)
+                + " " + gc.get(GregorianCalendar.HOUR_OF_DAY)
+                + ":" + gc.get(GregorianCalendar.MINUTE)
+                + ":" + gc.get(GregorianCalendar.SECOND);
         Result result = new Result(playerOne, playerTwo, winner, dateTime);
         dbHandler.addResult(result);
 

@@ -36,7 +36,7 @@ public class Result {
                 loser = playerTwo;
             else
                 loser = playerOne;
-            result += winner + " won against " + loser;
+            result += winner + " beat " + loser;
         }
         else
             result += playerOne + " vs " + playerTwo + ": tie!";
