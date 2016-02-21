@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.GregorianCalendar;
 
 /**
@@ -23,7 +25,8 @@ public class Game extends AppCompatActivity {
     Button btnNewGame;
     Button btnResults;
 
-    TextView[] boardElements;
+    ArrayList<TextView> boardElementViews;
+    String[] boardElements;
     String playerOne;
     String playerTwo;
     int elementsOnBoard = 0;
@@ -59,10 +62,12 @@ public class Game extends AppCompatActivity {
         };
 
         // Get the gameBoard and all its elements
-        boardElements = new TextView[9];
+        boardElements = new String[9];
+        boardElementViews = new ArrayList<>(9);
         for (int i = 0; i < gameBoard.getChildCount(); i++) {
             TextView boardElement = (TextView) gameBoard.getChildAt(i);
-            boardElements[i] = boardElement;
+            boardElementViews.add(i, boardElement);
+            boardElements[i] = "";
             boardElement.setOnClickListener(boardElementListener);
         }
     }
@@ -73,9 +78,6 @@ public class Game extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 resetGame();
-                /* Alternatively restart activity
-                AppCompatActivity activity = (AppCompatActivity) context;
-                activity.recreate(); */
             }
         });
 
@@ -96,6 +98,7 @@ public class Game extends AppCompatActivity {
             boardElement.setText("");
             boardElement.setEnabled(true);
             boardElement.setClickable(true);
+            Arrays.fill(boardElements, "");
             elementsOnBoard = 0;
             player = 1;
         }
@@ -103,13 +106,18 @@ public class Game extends AppCompatActivity {
 
     // Add element to board, player 1 = X, player 2 = O
     private void addElementToBoard(TextView boardElement) {
+        String element;
         if (player == 1)
-            boardElement.setText("X");
+            element = "X";
         else
-            boardElement.setText("O");
-        player *= -1;
+            element = "O";
+
+        boardElement.setText(element);
+        int elementViewIndex = boardElementViews.indexOf(boardElement);
+        boardElements[elementViewIndex] = element;
 
         elementsOnBoard++;
+        player *= -1;
         checkGameState();
     }
 
@@ -146,12 +154,12 @@ public class Game extends AppCompatActivity {
 
         // Check if there is a winner from the middle position (4)
         if (checkForWinnerDiagonal())
-            winner = boardElements[4].getText().toString();
+            winner = boardElements[4];
 
         // Or if there a winner in rows
         for (int i = 0; i < 7; i+= 3) {
             if (checkForWinnerRow(i)) {
-                winner = boardElements[i].getText().toString();
+                winner = boardElements[i];
                 break;
             }
         }
@@ -159,14 +167,10 @@ public class Game extends AppCompatActivity {
         // Check if there is a winner in columns
         for (int i = 0; i < 3; i++) {
             if (checkForWinnerColumn(i)) {
-                winner = boardElements[i].getText().toString();
+                winner = boardElements[i];
                 break;
             }
         }
-
-        // And check if there is a winner diagonally
-        if (checkForWinnerDiagonal())
-            winner = boardElements[4].getText().toString();
 
         // End game if there was a winner
         if (winner.equals("X") || winner.equals("O") || elementsOnBoard == 9) {
@@ -198,11 +202,11 @@ public class Game extends AppCompatActivity {
 
     // Compare 3 cells to see if there is a winner
     private boolean checkForWinnerCells (int cellOne, int cellTwo, int cellThree) {
-        CharSequence elementOne = boardElements[cellOne].getText();
-        CharSequence elementTwo = boardElements[cellTwo].getText();
-        CharSequence elementThree = boardElements[cellThree].getText();
+        String elementOne = boardElements[cellOne];
+        String elementTwo = boardElements[cellTwo];
+        String elementThree = boardElements[cellThree];
 
-        return !elementOne.toString().isEmpty()
+        return !elementOne.isEmpty()
                 && elementOne.equals(elementTwo)
                 && elementOne.equals(elementThree);
     }
