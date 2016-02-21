@@ -12,7 +12,10 @@
         android:layout_height="wrap_content"
         android:id="@+id/txtPlayerOne"
         android:inputType="textPersonName"
-        android:hint="@string/hint_player_one" />
+        android:hint="@string/hint_player_one"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp" />
 
     <EditText
         android:layout_width="match_parent"
@@ -20,7 +23,7 @@
         android:id="@+id/txtPlayerTwo"
         android:inputType="textPersonName"
         android:hint="@string/hint_player_two"
-        android:layout_marginTop="5dp" />
+        android:layout_margin="10dp" />
 
     <Button
         android:layout_width="match_parent"
