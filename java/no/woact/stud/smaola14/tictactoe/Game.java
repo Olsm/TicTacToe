@@ -122,9 +122,16 @@ public class Game extends AppCompatActivity {
     }
 
     // End the game and show results
-    private void endGame(String winner) {
-        String winnerText;
+    private void endGame(String winnerElement) {
+        String winner = "";
 
+        // Find whoe was the winner by element
+        if (winnerElement.equals("X"))
+            winner = playerOne;
+        else if (winnerElement.equals("O"))
+            winner = playerTwo;
+
+        String winnerText;
         if (!winner.isEmpty())
             winnerText = winner + " won!";
         else
@@ -152,34 +159,25 @@ public class Game extends AppCompatActivity {
     private void checkGameState() {
         String winner = "";
 
+        if (elementsOnBoard == 9)
+            endGame("");
+
         // Check if there is a winner from the middle position (4)
         if (checkForWinnerDiagonal())
-            winner = boardElements[4];
+            endGame(boardElements[4]);
 
         // Or if there a winner in rows
         for (int i = 0; i < 7; i+= 3) {
             if (checkForWinnerRow(i)) {
-                winner = boardElements[i];
-                break;
+                endGame(boardElements[i]);
             }
         }
 
         // Check if there is a winner in columns
         for (int i = 0; i < 3; i++) {
             if (checkForWinnerColumn(i)) {
-                winner = boardElements[i];
-                break;
+                endGame(boardElements[i]);
             }
-        }
-
-        // End game if there was a winner
-        if (winner.equals("X") || winner.equals("O") || elementsOnBoard == 9) {
-            if (winner.equals("X"))
-                winner = playerOne;
-            else if (winner.equals("O"))
-                winner = playerTwo;
-
-            endGame(winner);
         }
 
     }
